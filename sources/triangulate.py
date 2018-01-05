@@ -9,7 +9,7 @@ def InTriangle(a, b, c, p):
 	L = [0, 0, 0]
 	eps = 0.0000001
 	# calculate barycentric coefficients for point p
-    # eps is needed as error correction since for very small distances denom->0
+	# eps is needed as error correction since for very small distances denom->0
 	L[0] = ((b[1] - c[1]) * (p[0] - c[0]) + (c[0] - b[0]) * (p[1] - c[1])) \
 		  /(((b[1] - c[1]) * (a[0] - c[0]) + (c[0] - b[0]) * (a[1] - c[1])) + eps)
 	L[1] = ((c[1] - a[1]) * (p[0] - c[0]) + (a[0] - c[0]) * (p[1] - c[1])) \
@@ -17,7 +17,7 @@ def InTriangle(a, b, c, p):
 	L[2] = 1 - L[0] - L[1]
 	# check if p lies in triangle (a, b, c)
 	for x in L:
-		if x >= 1 or x <= 0:
+		if x > 1 or x < 0:
 			return False  
 	return True  
 
